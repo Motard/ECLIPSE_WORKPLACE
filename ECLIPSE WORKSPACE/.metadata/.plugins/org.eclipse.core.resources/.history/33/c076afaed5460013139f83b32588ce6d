@@ -73,7 +73,7 @@ public class Employee {
 	@Override
 	public String toString(){
 		
-		return getName() + " " + getEmpNum() + " " + getCity();
+		//return getName() + " " + getEmpNum() + " " + getCity();
 		
 	}
 }
