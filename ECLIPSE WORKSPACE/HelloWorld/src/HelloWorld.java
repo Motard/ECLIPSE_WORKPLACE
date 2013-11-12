@@ -25,11 +25,22 @@
 			//System.out.println("Hello " + emp.getName().toString() + ", size " + emp.getName().length());
 			
 			
-			Employee emp = new Employee(123, "Paulo Martins", "Cacém");
+			//Employee emp = new Employee(123, "Paulo Martins", "Cacém");
 			
 			//System.out.println("Hello " + emp.getName() + " from - " + emp.getCity());
+			//System.out.println(emp.toString());
 			
-			System.out.println(emp.toString());
+			Director dir = new Director();
+			
+			System.out.println(dir.getCity());
+			
+			Employee[] employeesList = new Employee[3];
+			
+			employeesList[0] = new Employee(231654,"Paulo Martins");
+			employeesList[1] = new Director(2316,"Joao Silva");
+			employeesList[2] = new Employee(231,"Pedro Correia");
+			//System.out.println(employeesList[1]);
+			((Director)employeesList[0]).firesEveryone();
 			
 		}
 	}

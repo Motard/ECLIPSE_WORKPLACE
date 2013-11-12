@@ -7,6 +7,8 @@ public class Employee {
 	private int 	empNum;
 	private String 	name;
 	private String 	city;
+	private double 	salary;
+	
 	
 	public Employee(){
 		
@@ -28,12 +30,14 @@ public class Employee {
 	 *   @param empNum 	The number of the {@link Employee}
 	 *   @param name 	The name of the {@link Employee}
 	 *   @param city	The city of the {@link Employee}
+	 *   @param salary The salary of the {@link Employee}
 	 * */
 	
 	public Employee (int empNum, String name, String city){
 		
-		this.empNum = empNum;
-		this.name = name;
+		//this.empNum = empNum;
+		//this.name = name;
+		this(empNum,name);
 		this.city = city;
 	}
 	/*
@@ -55,6 +59,11 @@ public class Employee {
 		return city;
 	}
 	
+	public double getSalary(){
+		
+		return salary;
+	}
+	
 	public void setEmpNum(int empNum){
 		
 		this.empNum = empNum;
@@ -70,10 +79,15 @@ public class Employee {
 		this.city = city;
 	}
 	
+	public void setSalary(double salary){
+		
+		this.salary = salary;
+	}
+	
 	@Override
 	public String toString(){
 		
-		return getName() + " " + getEmpNum() + " " + getCity();
+		return "Empregado " + getName() + " " + getEmpNum() + " " + getCity();
 		
 	}
 }
