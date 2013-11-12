@@ -17,6 +17,7 @@ local.properties
 .loadpath
 .log
 .tree
+.xmi
 
 # External tool builders
 .externalToolBuilders/
