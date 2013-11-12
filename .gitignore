@@ -18,6 +18,7 @@ local.properties
 .log
 .tree
 .xmi
+.metadata/
 
 # External tool builders
 .externalToolBuilders/
