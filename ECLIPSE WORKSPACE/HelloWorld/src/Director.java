@@ -26,6 +26,6 @@ public class Director extends Employee{
 	
 	public void firesEveryone(){
 		
-		System.out.println("Despediu toda a gente");
+		System.out.println("Despediu toda a gente!!!");
 	}
 }
