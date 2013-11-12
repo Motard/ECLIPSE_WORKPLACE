@@ -10,14 +10,14 @@ public class Employee {
 	private double 	salary;
 	
 	
-//	public Employee(){
-//		
-//		this.city = "Lisboa";
-//	}
+	public Employee(){
+		
+		this.city = "Lisboa";
+	}
 
 	public Employee (int empNum, String name){
 		
-		//this();//chama o constructor por defeito
+		this();//chama o constructor por defeito
 		
 		this.empNum = empNum;
 		this.name = name;
@@ -33,13 +33,13 @@ public class Employee {
 	 *   @param salary The salary of the {@link Employee}
 	 * */
 	
-//	public Employee (int empNum, String name, String city){
-//		
-//		//this.empNum = empNum;
-//		//this.name = name;
-//		this(empNum,name);
-//		this.city = city;
-//	}
+	public Employee (int empNum, String name, String city){
+		
+		//this.empNum = empNum;
+		//this.name = name;
+		this(empNum,name);
+		this.city = city;
+	}
 	/*
 	 * Getters and Setters
 	 * */
