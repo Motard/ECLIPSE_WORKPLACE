@@ -2,7 +2,7 @@
 /**
  * class to represent one employee 
  * */
-public class Employee {
+public class Employee implements Worker {
 
 	private int 	empNum;
 	private String 	name;
@@ -89,6 +89,11 @@ public class Employee {
 		
 		return "Empregado " + getName() + " " + getEmpNum() + " " + getCity();
 		
+	}
+	
+	public void startWork(){
+		
+		System.out.println("Inicia trabalho.");
 	}
 }
 
