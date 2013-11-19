@@ -95,5 +95,19 @@ public class Employee implements Worker {
 		
 		System.out.println("Inicia trabalho.");
 	}
+	
+	@Override
+	public void stopWork(){
+		
+		
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Employee emp = (Employee) obj;
+		
+		return 	(this.getName().equals(emp.getName())) && (this.getEmpNum() == (emp.getEmpNum())) && 
+				(this.getCity().equals(emp.getCity())) && (this.getSalary() == (emp.getSalary()));
+	}
 }
 

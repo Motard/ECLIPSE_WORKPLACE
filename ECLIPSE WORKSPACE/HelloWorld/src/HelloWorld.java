@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 
 
@@ -150,7 +152,39 @@
 				w.startWork();
 				countWorkers++;
 			}
-			//System.out.println("Existem " + countWorkers + "unidades.");
+			System.out.println("Existem " + countWorkers + "unidades.");
+			
+			System.out.println("*********************************");
+			System.out.println("*********************************");
+			
+			//With ArrayList<E>
+			
+			ArrayList<Worker> workersArrayList = new ArrayList<Worker>();
+			workersArrayList.add(new Employee(231654,"Paulo Martins"));
+			workersArrayList.add(new Director(2316,"Joao Silva"));
+			
+			Employee emp = new Employee(231,"Pedro Correia");
+			workersArrayList.add(emp);
+			//podemos adicionar objectos ao workersArrayList das duas maneiras acima indicadas.
+			
+			workersArrayList.add(new Machine("Epson", "EMP-75",1000));
+			workersArrayList.add(new Machine("Honda", "XRV", 2000));
+			
+			
+			countWorkers = 0;
+			for (Worker worker : workersArrayList){
+				
+				worker.startWork();
+				countWorkers++;
+			}
+			
+			System.out.println("Existem " + countWorkers + " trabalhadores.");
+			System.out.println("Existem " + workersArrayList.size() + " trabalhadores.");
+			
+			System.out.println("Tens o Pedro?" + workersArrayList.contains(emp));
+			System.out.println("Tens o Pedro?" + workersArrayList.contains(new Employee(231,"Pedro Correia")));
+			
+			System.out.println("Tens o Pedro?" + workersArrayList.contains(new Machine("Epson", "EMP-75",1000)));
 		}
 	}
 
