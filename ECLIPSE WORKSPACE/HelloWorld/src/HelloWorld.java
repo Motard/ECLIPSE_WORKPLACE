@@ -150,7 +150,7 @@
 				w.startWork();
 				countWorkers++;
 			}
-			System.out.println("Existem " + countWorkers + "unidades.");
+			//System.out.println("Existem " + countWorkers + "unidades.");
 		}
 	}
 
