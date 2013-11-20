@@ -78,7 +78,7 @@ public class Machine implements Worker{
 		
 		this.startedAt = null;
 		
-		System.out.println("Começou a trabalhar.");
+		System.out.println("A maquina parou.");
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ public class Employee implements Worker {
 	private String 	city;
 	private double 	salary;
 	
+	private long hoursWorked;
 	
 	public Employee(){
 		
@@ -98,8 +99,12 @@ public class Employee implements Worker {
 	
 	@Override
 	public void stopWork(){
+			
+	}
+	
+	public long workedHours(){
 		
-		
+		return hoursWorked;
 	}
 	
 	@Override
