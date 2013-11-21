@@ -25,8 +25,7 @@ public class MyCompany {
 		
 		System.out.println("A maquina trabalhou " + machine.workedHours() + " segundos");
 		
-		machine.stopWork();
-	
+		
 		
 	}
 }

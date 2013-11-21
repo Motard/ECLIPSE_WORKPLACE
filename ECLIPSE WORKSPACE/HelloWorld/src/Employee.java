@@ -132,7 +132,7 @@ public class Employee implements Worker {
 			workedHours += interval.duration();
 		}
 		
-		return workedHours;
+		return workedHours + sessionTimeInSeconds();
 	}
 	
 	@Override

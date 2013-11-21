@@ -4,12 +4,12 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 
-public class TimeInterval {
+public class TimeIntervalOuter {
 
 	public Date startWorkDate,
 				endWorkDate;
 	
-	public TimeInterval(Date startWorkDate, Date endWorkDate){
+	public TimeIntervalOuter(Date startWorkDate, Date endWorkDate){
 		
 		this.startWorkDate = startWorkDate;
 		this.endWorkDate = endWorkDate;
