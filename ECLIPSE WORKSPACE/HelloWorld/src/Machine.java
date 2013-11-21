@@ -55,36 +55,57 @@ public class Machine implements Worker{
 		
 	}
 	
-	public void startWork(){
-		
+	public boolean startWork(){
+		//Utilizaçao da logica invertida. Testar primeiro a falha
+		if (isWorking())
+			return false;
+			
 		System.out.println("Maquina iniciou...");
-		//TODO cuidado, porque pode ja estar a trabalhar.
 		this.startedAt = new Date();
+		return true;
 		
 	}
 	
+	//Metodo idempotente - 
 	@Override
-	public void stopWork(){
+	public void stopWork() throws UnsupportedOperationException{
 		
-		Date now = new Date();
-		
-		DateTime startDate = new DateTime(this.startedAt);
-		DateTime endDate = new DateTime(now);
-		
-		Duration duration = new Duration(startDate, endDate);
-		
-		//TODO alterar para getStandartHours()
-		this.hoursWorked = duration.getStandardSeconds();
-		
-		this.startedAt = null;
-		
-		System.out.println("A maquina parou.");
+		if (isWorking()){
+			
+			
+			this.hoursWorked += sessionTimeInSeconds();
+			
+			this.startedAt = null;
+			
+			System.out.println("A maquina parou.");
+		}else{
+			
+			throw new UnsupportedOperationException("A maquina ainda nao começou a trabalhar");
+		}
 	}
 	
 	@Override
 	public long workedHours(){
-		//TODO acrescentar as horas de trabalho actual
 		
-		return this.hoursWorked;
+		return this.hoursWorked + sessionTimeInSeconds();
+	}
+
+	private long sessionTimeInSeconds(){
+		
+		if (!isWorking())
+			return 0;
+		
+		Date now = new Date();
+		DateTime startDate = new DateTime(this.startedAt);
+		DateTime endDate = new DateTime(now);
+		
+		return new Duration(startDate, endDate).getStandardSeconds();
+		
+	}
+	
+	@Override
+	public boolean isWorking() {
+		
+		return startedAt != null;
 	}
 }

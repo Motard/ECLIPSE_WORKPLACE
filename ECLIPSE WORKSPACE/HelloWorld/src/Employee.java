@@ -1,3 +1,9 @@
+import java.util.ArrayList;
+import java.util.Date;
+
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+
 
 /**
  * class to represent one employee 
@@ -9,11 +15,14 @@ public class Employee implements Worker {
 	private String 	city;
 	private double 	salary;
 	
-	private long hoursWorked;
+	private ArrayList<TimeIntervalNested> intervals;
+	
+	private Date startedAt;
 	
 	public Employee(){
 		
 		this.city = "Lisboa";
+		this.intervals = new ArrayList<>();
 	}
 
 	public Employee (int empNum, String name){
@@ -92,19 +101,38 @@ public class Employee implements Worker {
 		
 	}
 	
-	public void startWork(){
+	public boolean startWork(){
 		
-		System.out.println("Inicia trabalho.");
+		if (isWorking())
+			return false;
+		
+		System.out.println("Empregado Inicia trabalho.");
+		this.startedAt = new Date();
+		return true;
 	}
 	
 	@Override
-	public void stopWork(){
+	public void stopWork() throws UnsupportedOperationException{
+		
+		if (isWorking()){
+			this.intervals.add(new TimeIntervalNested(startedAt, new Date()));
 			
+			this.startedAt = null;
+			System.out.println("Empregado parou de trabalhar");
+		}else{
+			
+			throw new UnsupportedOperationException("O empregado ainda começou a trabalhar");
+		}
 	}
 	
 	public long workedHours(){
 		
-		return hoursWorked;
+		long workedHours = 0;
+		for (TimeIntervalNested interval : this.intervals) {
+			workedHours += interval.duration();
+		}
+		
+		return workedHours;
 	}
 	
 	@Override
@@ -114,5 +142,47 @@ public class Employee implements Worker {
 		return 	(this.getName().equals(emp.getName())) && (this.getEmpNum() == (emp.getEmpNum())) && 
 				(this.getCity().equals(emp.getCity())) && (this.getSalary() == (emp.getSalary()));
 	}
+
+	@Override
+	public boolean isWorking() {
+		
+		return this.startedAt != null;
+	}
+
+	private long sessionTimeInSeconds(){
+		
+		if (!isWorking())
+			return 0;
+		
+		Date now = new Date();
+		DateTime startDate = new DateTime(this.startedAt);
+		DateTime endDate = new DateTime(now);
+		
+		return new Duration(startDate, endDate).getStandardSeconds();
+		
+	}
+	
+	private class TimeIntervalNested {
+
+		public Date startWorkDate,
+					endWorkDate;
+		
+		public TimeIntervalNested(Date startWorkDate, Date endWorkDate){
+			
+			this.startWorkDate = startWorkDate;
+			this.endWorkDate = endWorkDate;
+		}
+		
+		public long duration(){
+			
+			DateTime dt1 = new DateTime(startWorkDate);
+			DateTime dt2 = new DateTime(endWorkDate);
+			
+			return new Duration(dt1, dt2).getStandardSeconds();
+		}
+		
+	}
 }
+
+
 

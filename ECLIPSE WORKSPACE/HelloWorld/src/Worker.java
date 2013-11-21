@@ -1,9 +1,12 @@
 
 public interface Worker {
 
-	abstract void startWork();
+	abstract boolean startWork();
 	
-	void stopWork();
+	//exemplo de orientaçao á excepcao
+	void stopWork() throws UnsupportedOperationException;
+	
 	long workedHours();
+	boolean isWorking();
 	
 }
