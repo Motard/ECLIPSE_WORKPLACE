@@ -79,9 +79,17 @@ public class Employee implements Worker {
 		this.empNum = empNum;
 	}
 	
-	public void setName( String name){
+//	public void setName( String name){
+//		
+//		this.name = name;
+//	}
+	
+	public void setName(String...names){
 		
-		this.name = name;
+		for (int i=0 ; i < names.length; i++){
+			
+			this.name = names[i] + ((i==names.length-1)?"": " ");
+		}
 	}
 	
 	public void setCity(String city){
@@ -97,8 +105,16 @@ public class Employee implements Worker {
 	@Override
 	public String toString(){
 		
-		return "Empregado " + getName() + " " + getEmpNum() + " " + getCity();
+		//return "Empregado " + getName() + " " + getEmpNum() + " " + getCity();
 		
+		//Com o StringBuilder
+		//Utilizaçao da "API Fluent" (Idioma Fluente)
+		StringBuilder builder = new StringBuilder("Employee [");
+		builder	.append("empName=").append(this.getName())
+				.append(", empNum=").append(this.getEmpNum())
+				.append(", empCity").append(this.getCity());
+		
+		return builder.toString();
 	}
 	
 	public boolean startWork(){
