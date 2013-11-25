@@ -91,7 +91,7 @@ public class Employee implements Worker {
 			this.name = names[i] + ((i==names.length-1)?"": " ");
 		}
 	}
-	
+	 
 	public void setCity(String city){
 		
 		this.city = city;
