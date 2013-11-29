@@ -88,7 +88,7 @@ public class Employee implements Worker {
 		
 		for (int i=0 ; i < names.length; i++){
 			
-			this.name = names[i] + ((i==names.length-1)?"": " ");
+			this.name += names[i] + ((i==names.length-1)?"": " ");
 		}
 	}
 	 
